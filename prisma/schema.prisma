@@ -8,10 +8,20 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique @db.VarChar(25)
+  id       Int      @id @default(autoincrement())
+  username String   @unique @db.VarChar(25)
   fullName String
   password String
+  folders  Folder[]
+}
+
+model Folder {
+  id        Int       @id @default(1)
+  name      String    @db.VarChar(50)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
 }
 
 model Session {
