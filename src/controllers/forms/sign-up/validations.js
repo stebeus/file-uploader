@@ -28,7 +28,7 @@ const fullName = createNameChain({
 });
 
 const isUsernameTaken = async (username) => {
-	const isUsernameTaken = await prisma.user.findUnique({ where: { username } });
+	const isUsernameTaken = await prisma.user.findFirst({ where: { username } });
 	if (isUsernameTaken) throw new Error('username has been taken');
 };
 
