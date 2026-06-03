@@ -1,0 +1,21 @@
+@scope (.Alert) {
+	a {
+		font-weight: var(--fw-medium);
+		text-decoration: underline;
+		text-underline-offset: 0.125rem;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+@scope (.Field) {
+	::placeholder {
+		opacity: var(--opacity);
+	}
+
+	textarea {
+		resize: vertical;
+	}
+}

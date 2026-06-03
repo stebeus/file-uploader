@@ -1,0 +1,308 @@
+/* CSS DIRECTORY
+	1. ANIMATIONS & TRANSITIONS
+	2. BORDERS
+	3. EFFECTS
+	4. INTERACTIVITY
+	5. LAYOUT
+	6. MODIFIERS
+	7. SIZING
+	8. SPACING
+	9. TYPOGRAPHY
+*/
+
+/* || ANIMATIONS & TRANSITIONS */
+
+.transition-spin {
+	transition: transform 750ms;
+
+	&:hover {
+		transform: rotate(1turn);
+	}
+}
+
+/* || BORDER */
+
+.border {
+	border: var(--border);
+}
+
+.border-radius {
+	border-radius: var(--size-2xs);
+}
+
+.border-radius-tr-bl {
+	border-radius: 0 var(--size-2xs) 0 var(--size-2xs);
+}
+
+.border-top {
+	border-top: var(--border);
+}
+
+.border-bottom {
+	border-bottom: var(--border);
+}
+
+/* || EFFECTS */
+
+.opacity {
+	opacity: var(--opacity);
+}
+
+/* || INTERACTIVITY */
+
+.hover:hover {
+	--percentage: 10%;
+
+	background-color: color-mix(
+		in oklch,
+		var(--color-base),
+		var(--color-hover) var(--percentage)
+	);
+
+	border-color: transparent;
+
+	&:where(.--danger, .--info, .--success) {
+		color: var(--color-base);
+		background-color: var(--color-content);
+	}
+
+	&:where(.--inverted) {
+		background-color: color-mix(
+			in oklch,
+			var(--color-content),
+			var(--color-hoverInverted) var(--percentage)
+		);
+	}
+}
+
+/* || LAYOUT */
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.gap-2xs {
+	gap: var(--size-2xs);
+}
+
+.gap-xs {
+	gap: var(--size-xs);
+}
+
+.gap-s {
+	gap: var(--size-s);
+}
+
+.gap-m {
+	gap: var(--size-m);
+}
+
+.gap-l {
+	gap: var(--size-l);
+}
+
+.gap-xl {
+	gap: var(--size-xl);
+}
+
+.gap-2xl {
+	gap: var(--size-2xl);
+}
+
+.grid {
+	display: grid;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.place-center {
+	place-content: center;
+	place-items: center;
+}
+
+.place-content-center {
+	place-content: center;
+}
+
+.place-items-center {
+	place-items: center;
+}
+
+.place-self-center {
+	place-self: center;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.relative {
+	position: relative;
+}
+
+.right-0 {
+	right: 0;
+}
+
+.top-0 {
+	top: 0;
+}
+
+/* || MODIFIERS */
+
+.--admin {
+	--hue: var(--hue-admin);
+
+	--color-base: oklch(from var(--tint-base) l c var(--hue));
+	--color-content: oklch(from var(--tint-content) l c var(--hue));
+
+	color: var(--color-content);
+	background-color: var(--color-base);
+	border-color: var(--color-content);
+}
+
+.--danger {
+	--hue: var(--hue-danger);
+
+	--color-base: oklch(from var(--tint-base) l c var(--hue));
+	--color-content: oklch(from var(--tint-content) l c var(--hue));
+
+	color: var(--color-content);
+	background-color: var(--color-base);
+	border-color: var(--color-content);
+}
+
+.--info {
+	--hue: var(--hue-info);
+
+	--color-base: oklch(from var(--tint-base) l c var(--hue));
+	--color-content: oklch(from var(--tint-content) l c var(--hue));
+
+	color: var(--color-content);
+	background-color: var(--color-base);
+	border-color: var(--color-content);
+}
+
+.--inverted {
+	color: var(--color-base);
+	background-color: var(--color-content);
+	border-color: transparent;
+}
+
+/* || SIZING */
+
+.max-w {
+	max-width: 1280px;
+}
+
+.w-full {
+	width: 100%;
+}
+
+/* || SPACING */
+
+.mx-auto {
+	margin-inline: auto;
+}
+
+.p-2xs {
+	padding: var(--size-2xs);
+}
+
+.p-xs {
+	padding: var(--size-xs);
+}
+
+.p-s {
+	padding: var(--size-s);
+}
+
+.p-m {
+	padding: var(--size-m);
+}
+
+.p-l {
+	padding: var(--size-l);
+}
+
+.p-xl {
+	padding: var(--size-xl);
+}
+
+.p-2xl {
+	padding: var(--size-2xl);
+}
+
+.p-xs-m {
+	padding: var(--size-xs) var(--size-m);
+}
+
+.pl-xl {
+	padding-left: var(--size-xl);
+}
+
+/* || TYPOGRAPHY */
+
+.color-content {
+	color: var(--color-content);
+}
+
+.fs-xs {
+	font-size: var(--size-s);
+}
+
+.fs-s {
+	font-size: 0.875rem;
+}
+
+.fs-l {
+	font-size: var(--size-l);
+}
+
+.fs-xl {
+	font-size: var(--size-xl);
+}
+
+.fs-2xl {
+	font-size: var(--size-2xl);
+}
+
+.fw-medium {
+	font-weight: var(--fw-medium);
+}
+
+.fw-bold {
+	font-weight: var(--fw-bold);
+}
+
+.list-disc {
+	list-style-type: disc;
+}
+
+.sentence-case::first-letter {
+	text-transform: uppercase;
+}
+
+.separator-disc::after {
+	content: '•';
+}
+
+.separator-pipe::after {
+	margin: 0 var(--size-s);
+	content: '';
+	border-left: var(--border);
+}
+
+.text-center {
+	text-align: center;
+}

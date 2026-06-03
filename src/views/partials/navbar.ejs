@@ -1,0 +1,23 @@
+<header
+  class="border-bottom flex flex-wrap gap-xs justify-between p-xs-m place-items-center"
+>
+  <h1 class="fs-l fw-bold" title="Homepage">
+    <a href="/"><%= appName %></a>
+  </h1>
+  <nav>
+    <ul class="flex fw-medium gap-l place-items-center">
+      <li><a href="/">Home</a></li>
+
+      <% if (locals.user == null) { %>
+        <li><a href="/log-in">Log in</a></li>
+        <li>
+          <%- include('button-link', { href: '/sign-up', label: 'Sign up' }) %>
+        </li>
+      <% } else { %>
+        <li>
+          <%- include('button-link', { href: '/log-out', label: 'Log out' }) %>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
