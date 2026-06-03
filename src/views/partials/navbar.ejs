@@ -14,6 +14,8 @@
           <%- include('button-link', { href: '/sign-up', label: 'Sign up' }) %>
         </li>
       <% } else { %>
+        <li><a href="/create-folder">Create folder</a></li>
+        <li><a href="/edit-folder">Edit folder</a></li>
         <li><a href="/upload-file">Upload file</a></li>
         <li>
           <%- include('button-link', { href: '/log-out', label: 'Log out' }) %>

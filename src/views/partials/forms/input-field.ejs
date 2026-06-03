@@ -8,6 +8,7 @@
     maxlength="<%= locals.maxLength %>"
 		<%- locals.isRequired ? 'required' : '' %>
 		autocomplete=<%= locals.autocomplete ?? 'off' %>
+		<%- locals.value != null ? `value="${locals.value}"` : '' %>
 	>
 	<span class="fs-s opacity"><%= locals.helperText %></span>
 </label>
