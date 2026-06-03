@@ -8,6 +8,7 @@
 	},
 	"scripts": {
 		"db:migrate": "prisma migrate dev --name",
+		"db:reset": "prisma migrate reset",
 		"lint": "biome check --fix",
 		"start": "node --watch src/index.js",
 		"test": "node --test --watch"
