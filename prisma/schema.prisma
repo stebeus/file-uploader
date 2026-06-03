@@ -15,12 +15,13 @@ model Session {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  username String   @unique @db.VarChar(25)
-  fullName String
-  password String
-  folders  Folder[]
-  uploads  Upload[]
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(25)
+  fullName  String
+  password  String
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  folders   Folder[]
+  uploads   Upload[]
 }
 
 model Folder {
