@@ -7,6 +7,7 @@
 		"#root/*": "./src/*"
 	},
 	"scripts": {
+		"db:migrate": "prisma migrate dev --name",
 		"lint": "biome check --fix",
 		"start": "node --watch src/index.js",
 		"test": "node --test --watch"
