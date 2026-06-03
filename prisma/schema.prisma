@@ -7,6 +7,13 @@ datasource db {
   provider = "postgresql"
 }
 
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}
+
 model User {
   id       Int      @id @default(autoincrement())
   username String   @unique @db.VarChar(25)
@@ -36,11 +43,4 @@ model Upload {
   userId    Int
   folder    Folder?   @relation(fields: [folderId], references: [id])
   folderId  Int?
-}
-
-model Session {
-  id        String   @id
-  sid       String   @unique
-  data      String
-  expiresAt DateTime
 }
