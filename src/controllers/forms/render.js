@@ -2,7 +2,7 @@ const props = { autocomplete: 'on', isRequired: true };
 
 const renderForm = (
 	res,
-	{ title, action, errs, inputs, hasTextarea, textarea, submissionLabel },
+	{ title, action, errs, hasFileUpload, inputs, submissionLabel },
 ) => {
 	const status = errs == null ? 201 : 400;
 
@@ -10,9 +10,8 @@ const renderForm = (
 		title,
 		action,
 		errs,
+		hasFileUpload,
 		inputs,
-		hasTextarea,
-		textarea,
 		submissionLabel,
 	});
 };
