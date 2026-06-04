@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+	<%- include('partials/metadata', locals.title) %>
+	<body>
+		<div id="root" class="grid">
+			<%- include('partials/navbar') %>
+			<main class="flex flex-col gap-m max-w mx-auto p-m w-full">
+				<h2 class="fs-l fw-bold"><%= upload.name %></h2>
+
+				<p>Size: <%= upload.size %> bytes</p>
+				<p>Uploaded at: <%= upload.createdAt %> </p>
+
+				<%- include('partials/button-link', {
+					href: `/download/${upload.id}`,
+					label:'Download',
+				}) %>
+			</main>
+			<%- include('partials/footer') %>
+		</div>
+	</body>
+</html>

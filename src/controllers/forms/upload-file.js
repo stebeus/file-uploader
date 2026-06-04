@@ -9,6 +9,7 @@ const render = (res, errs) =>
 		hasFileUpload: true,
 		inputs: [
 			{ label: 'Upload file', type: 'file', name: 'upload', isRequired: true },
+			{ label: 'Folder id', name: 'folderId' },
 		],
 		submissionLabel: 'Upload',
 	});
@@ -17,12 +18,21 @@ const getUploadFile = (_req, res) => render(res);
 
 const uploadFile = async (req, res) => {
 	const {
-		file: { originalname, size },
+		body: { folderId = null },
+		file: { originalname, size, path },
 		user: { id },
 	} = req;
 
+	const safeFolderId = folderId.trim() === '' ? null : Number(folderId);
+
 	await prisma.upload.create({
-		data: { name: originalname, size, userId: id },
+		data: {
+			name: originalname,
+			size,
+			userId: id,
+			folderId: safeFolderId,
+			destination: path,
+		},
 	});
 
 	res.redirect('/');

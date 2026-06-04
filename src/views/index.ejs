@@ -23,6 +23,15 @@
 						<% } %>
 					</ul>
 				</section>
+
+				<section>
+					<h3 class="fw-medium">Uploads</h3>
+					<ul class="list-disc p-xs pl-xl">
+						<% for (const { id, name } of locals.uploads) { %>
+							<li><a href="upload/<%= id %>/"><%= name %></a></li>
+						<% } %>
+					</ul>
+				</section>
 			</main>
 			<%- include('partials/footer') %>
 		</div>
