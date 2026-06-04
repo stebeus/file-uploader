@@ -1,4 +1,4 @@
-# File Uploader
+# File uploader
 
 Upload personal files on the cloud for free.
 
