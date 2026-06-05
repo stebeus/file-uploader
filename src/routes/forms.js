@@ -21,12 +21,14 @@ const router = Router();
 router.get('/log-in', getLogIn);
 router.get('/sign-up', getSignUp);
 router.get('/upload-file', getUploadFile);
+router.get('/upload-file/folder/:folderId', getUploadFile);
 router.get('/create-folder', getCreateFolder);
 router.get('/edit-folder/:folderId', getEditFolder);
 
 router.post('/log-in', logIn);
 router.post('/sign-up', signUp);
-router.post('/upload-file', upload.single('upload'), uploadFile);
+router.post('/upload-file/', upload.single('upload'), uploadFile);
+router.post('/upload-file/:folderId', upload.single('upload'), uploadFile);
 router.post('/create-folder', createFolder);
 router.post('/edit-folder/:folderId', editFolder);
 

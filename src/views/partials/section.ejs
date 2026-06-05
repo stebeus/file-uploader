@@ -1,0 +1,11 @@
+<section class="flex flex-col gap-m">
+  <h2 class="fs-l fw-bold"><%= name %></h2>
+
+  <ul class="flex flex-col gap-xs">
+    <% for (const { id, name } of locals.model) { %>
+      <li class="border border-radius p-m">
+        <a href="<%= route %>/<%= id %>/"><%= name %></a>
+      </li>
+    <% } %>
+  </ul>
+</section>

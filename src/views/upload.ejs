@@ -4,11 +4,16 @@
 	<body>
 		<div id="root" class="grid">
 			<%- include('partials/navbar') %>
-			<main class="flex flex-col gap-m max-w mx-auto p-m w-full">
+			<main class="flex flex-col gap-l max-w mx-auto p-m w-full">
 				<h2 class="fs-l fw-bold"><%= upload.name %></h2>
 
 				<p>Size: <%= upload.size %> bytes</p>
-				<p>Uploaded at: <%= upload.createdAt %> </p>
+				<p>
+					Uploaded at:
+					<time datetime="<%= upload.createdAt %>">
+						<%= formatDate(upload.createdAt) %>
+					</time>
+				</p>
 
 				<%- include('partials/button-link', {
 					href: `/download/${upload.id}`,

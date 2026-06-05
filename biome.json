@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -71,7 +71,6 @@
 				"useConsistentObjectDefinitions": "error",
 				"useDefaultParameterLast": "error",
 				"useDefaultSwitchClause": "error",
-				"useExportsLast": "error",
 				"useFilenamingConvention": {
 					"level": "error",
 					"options": {
@@ -79,7 +78,6 @@
 					}
 				},
 				"useForOf": "error",
-				"useNamingConvention": "error",
 				"useNodeAssertStrict": "error",
 				"useNumericSeparators": "error",
 				"useObjectSpread": "error",

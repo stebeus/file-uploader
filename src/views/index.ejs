@@ -4,34 +4,51 @@
 	<body>
 		<div id="root" class="grid">
 			<%- include('partials/navbar') %>
-			<main class="flex flex-col gap-m max-w mx-auto p-m w-full">
-				<h2 class="fs-l fw-bold"><%= locals.folder?.name ?? 'Root' %></h2>
+			<main class="flex flex-col gap-xl max-w mx-auto p-m w-full">
+				<div class="flex flex-wrap gap-2xl place-center">
+					<% if (locals.folder != null) { %>
+						<p class="color-content fs-2xl fw-bold">
+							<%= locals.folder?.name %>
+						</p>
+					<% } %>
 
-				<% if (locals.folder != null) { %>
-					<%- include('partials/button-link', {
-						class: '--danger',
-						href: `/delete-folder/${locals.folder?.id}`,
-						label: 'Delete folder'
-					}) %>
-				<% } %>
+					<div class="flex flex-wrap gap-xs">
+						<%- include('partials/button-link', {
+							href: `/upload-file/${locals.folder == null ? '' : `folder/${locals.folder?.id}`}`,
+							label: 'Upload file'
+						}) %>
 
-				<section>
-					<h3 class="fw-medium">Folders</h3>
-					<ul class="list-disc p-xs pl-xl">
-						<% for (const { id, name } of locals.folders) { %>
-							<li><a href="/folder/<%= id %>/"><%= name %></a></li>
+						<%- include('partials/button-link', {
+							href: '/create-folder/',
+							label: 'Create folder'
+						}) %>
+
+						<% if (locals.folder != null) { %>
+							<%- include('partials/button-link', {
+								href: `/edit-folder/${locals.folder?.id}`,
+								label: 'Edit folder'
+							}) %>
+
+							<%- include('partials/button-link', {
+								class: '--danger',
+								href: `/delete-folder/${locals.folder?.id}`,
+								label: 'Delete folder'
+							}) %>
 						<% } %>
-					</ul>
-				</section>
+					</div>
+				</div>
 
-				<section>
-					<h3 class="fw-medium">Uploads</h3>
-					<ul class="list-disc p-xs pl-xl">
-						<% for (const { id, name } of locals.uploads) { %>
-							<li><a href="upload/<%= id %>/"><%= name %></a></li>
-						<% } %>
-					</ul>
-				</section>
+				<%- include('partials/section', {
+					name: 'Folders',
+					model: locals.folders,
+					route: '/folder'
+				}) %>
+
+				<%- include('partials/section', {
+					name: 'Uploads',
+					model: locals.uploads,
+					route: 'upload'
+				}) %>
 			</main>
 			<%- include('partials/footer') %>
 		</div>
