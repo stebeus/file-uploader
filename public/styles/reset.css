@@ -19,11 +19,7 @@
 ::file-selector-button {
 	padding: 0;
 	font: inherit;
-	line-height: calc(
-		2px +
-		2ex +
-		2px
-	); /* Use accessible and smarter line heights */
+	line-height: calc(2px + 2ex + 2px); /* Use accessible and smarter line heights */
 	color: currentColor;
 	border: none;
 

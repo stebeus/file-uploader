@@ -53,12 +53,7 @@
 .hover:hover {
 	--percentage: 10%;
 
-	background-color: color-mix(
-		in oklch,
-		var(--color-base),
-		var(--color-hover) var(--percentage)
-	);
-
+	background-color: color-mix(in oklch, var(--color-base), var(--color-hover) var(--percentage));
 	border-color: transparent;
 
 	&:where(.--danger, .--info, .--success) {
