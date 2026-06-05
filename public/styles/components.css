@@ -9,13 +9,3 @@
 		}
 	}
 }
-
-@scope (.Field) {
-	::placeholder {
-		opacity: var(--opacity);
-	}
-
-	textarea {
-		resize: vertical;
-	}
-}
