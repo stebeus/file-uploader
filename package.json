@@ -7,7 +7,8 @@
 		"#root/*": "./src/*"
 	},
 	"scripts": {
-		"db:migrate": "prisma migrate dev --name && prisma generate",
+		"db:migrate": "prisma migrate dev --name",
+		"db:gen": "prisma generate",
 		"db:reset": "prisma migrate reset",
 		"lint": "biome check --fix",
 		"start": "node --watch src/index.js",
