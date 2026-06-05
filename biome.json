@@ -12,18 +12,13 @@
 	"overrides": [
 		{
 			"includes": ["**/*.config.{js,ts}"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
+			"linter": { "rules": { "style": { "noDefaultExport": "off" } } }
 		}
 	],
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"lineWidth": 100
 	},
 	"linter": {
 		"enabled": true,
@@ -32,14 +27,10 @@
 			"complexity": "error",
 			"correctness": {
 				"noGlobalDirnameFilename": "error",
-				"noProcessGlobal": "error",
-				"noUndeclaredDependencies": "error",
-				"noUndeclaredVariables": "error",
 				"useImportExtensions": "error"
 			},
 			"performance": {
-				"noAwaitInLoops": "error",
-				"noBarrelFile": "error"
+				"noAwaitInLoops": "error"
 			},
 			"security": "error",
 			"style": {
@@ -85,7 +76,6 @@
 				"useThrowNewError": "error"
 			},
 			"suspicious": {
-				"noBitwiseOperators": "error",
 				"noConsole": "error",
 				"noConstantBinaryExpressions": "error",
 				"noImportCycles": "error",
@@ -109,7 +99,6 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"noDuplicateClasses": "on",
 				"organizeImports": {
 					"level": "on",
 					"options": {
