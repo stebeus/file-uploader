@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import { createFolder, getCreateFolder } from '#root/controllers/uploads/create-folder/handlers.js';
-import { editFolder, getEditFolder } from '#root/controllers/uploads/edit-folder/handlers.js';
-import { getUpload, upload } from '#root/controllers/uploads/upload.js';
+import { createFolder, getCreateFolder } from '#root/controllers/upload/create-folder/handlers.js';
+import { editFolder, getEditFolder } from '#root/controllers/upload/edit-folder/handlers.js';
+import { getUpload, upload } from '#root/controllers/upload/upload.js';
 
 export const uploads = Router();
 
