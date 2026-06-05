@@ -5,20 +5,15 @@
 		<div id="root" class="grid">
 			<%- include('partials/navbar') %>
 			<main class="flex flex-col gap-l max-w mx-auto p-m w-full">
-				<h2 class="fs-l fw-bold"><%= upload.name %></h2>
+				<h2 class="fs-l fw-bold"><%= file.name %></h2>
+				<p>Size: <%= formatSize(file.size) %> MB</p>
 
-				<p>Size: <%= upload.size %> bytes</p>
 				<p>
 					Uploaded at:
-					<time datetime="<%= upload.createdAt %>">
-						<%= formatDate(upload.createdAt) %>
-					</time>
+					<time datetime="<%= file.createdAt %>"><%= formatDate(file.createdAt) %></time>
 				</p>
 
-				<%- include('partials/button-link', {
-					href: `/download/${upload.id}`,
-					label:'Download',
-				}) %>
+				<%- include('partials/button-link', { href: `/download/${file.id}`, label: 'Download' }) %>
 			</main>
 			<%- include('partials/footer') %>
 		</div>

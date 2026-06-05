@@ -5,10 +5,9 @@
 		<div id="root" class="flex flex-col gap-xs place-center">
 			<h1 class="fs-2xl fw-bold"><%= err.status ?? 500 %></h1>
 			<p><%= err.message %></p>
-      <%- include('partials/button-link', {
-				href: '/',
-				label: 'Go back home',
-			}) %>
+
+      <%- include('partials/button-link', { href: '/', label: 'Go back home'}) %>
+
 			<% if (nodeEnv !== 'production') { %>
 			  <pre class="border border-radius fs-s p-xl"><%= err.stack %></pre>
 			<% } %>

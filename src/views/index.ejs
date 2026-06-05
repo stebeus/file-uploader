@@ -8,13 +8,13 @@
 				<div class="flex flex-wrap gap-2xl place-center">
 					<% if (locals.folder != null) { %>
 						<p class="color-content fs-2xl fw-bold">
-							<%= locals.folder?.name %>
+							<%= folder.name %>
 						</p>
 					<% } %>
 
 					<div class="flex flex-wrap gap-xs">
 						<%- include('partials/button-link', {
-							href: `/upload-file/${locals.folder == null ? '' : `folder/${locals.folder?.id}`}`,
+							href: `/upload/${locals.folder == null ? '' : `folder/${folder.id}`}`,
 							label: 'Upload file'
 						}) %>
 
@@ -25,13 +25,13 @@
 
 						<% if (locals.folder != null) { %>
 							<%- include('partials/button-link', {
-								href: `/edit-folder/${locals.folder?.id}`,
+								href: `/edit-folder/${folder.id}`,
 								label: 'Edit folder'
 							}) %>
 
 							<%- include('partials/button-link', {
 								class: '--danger',
-								href: `/delete-folder/${locals.folder?.id}`,
+								href: `/delete-folder/${folder.id}`,
 								label: 'Delete folder'
 							}) %>
 						<% } %>
@@ -41,13 +41,13 @@
 				<%- include('partials/section', {
 					name: 'Folders',
 					model: locals.folders,
-					route: '/folder'
+					route: '/folder',
 				}) %>
 
 				<%- include('partials/section', {
-					name: 'Uploads',
-					model: locals.uploads,
-					route: 'upload'
+					name: 'Files',
+					model: locals.files,
+					route: 'file'
 				}) %>
 			</main>
 			<%- include('partials/footer') %>
