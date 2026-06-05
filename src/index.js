@@ -6,37 +6,30 @@ import passport from 'passport';
 import { PORT } from './config.js';
 import { handleError, handleNotFoundError } from './controllers/errors.js';
 import { setCurrentUser } from './lib/auth.js';
-import { expressSession } from './lib/express-session.js';
-import { logger, pino } from './lib/pino.js';
-import { forms } from './routes/forms.js';
-import { index } from './routes/index.js';
+import { logger, pino } from './lib/logger.js';
+import { session } from './lib/session.js';
+import { parseParamIds, setAppName } from './middleware.js';
+import { router } from './routes/router.js';
 
 const app = express();
-
-const { dirname } = import.meta;
-const viewsPath = join(dirname, 'views');
+const viewsPath = join(import.meta.dirname, 'views');
 
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 
 app.use(pino);
 
-app.use(expressSession);
+app.use(session);
 app.use(passport.session());
 app.use(setCurrentUser);
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-const setAppName = (_req, res, next) => {
-	res.locals.appName = 'File Uploader';
-	next();
-};
-
 app.use(setAppName);
+app.use(parseParamIds);
 
-app.use(index);
-app.use(forms);
+app.use(router);
 
 app.use(handleNotFoundError);
 app.use(handleError);
