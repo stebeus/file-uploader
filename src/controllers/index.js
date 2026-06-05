@@ -1,47 +1,34 @@
 import { prisma } from '#root/lib/prisma.js';
 
-const getIndex = async (req, res) => {
+export const getIndex = async (req, res) => {
+	if (req.user == null) return res.redirect('/login');
+
 	const folders = await prisma.folder.findMany();
-	const uploads = await prisma.upload.findMany({ where: { folderId: null } });
-	res.render('index', { folders, uploads });
+	const files = await prisma.file.findMany({ where: { folderId: null } });
+
+	res.render('index', { folders, files });
 };
 
-const getFolder = async (req, res) => {
+export const getFolder = async (req, res) => {
 	const { folderId } = req.params;
 
 	const folders = await prisma.folder.findMany();
+	const folder = await prisma.folder.findFirst({ where: { id: folderId } });
+	const files = await prisma.file.findMany({ where: { folderId } });
 
-	const folder = await prisma.folder.findFirst({
-		where: { id: Number(folderId) },
-	});
-
-	const uploads = await prisma.upload.findMany({
-		where: { folderId: Number(folderId) },
-	});
-
-	res.render('index', { folder, folders, uploads });
+	res.render('index', { folders, folder, files });
 };
 
-const deleteFolder = async (req, res) => {
-	await prisma.folder.delete({ where: { id: Number(req.params.folderId) } });
+export const deleteFolder = async (req, res) => {
+	const { folderId } = req.params;
+
+	await prisma.folder.delete({ where: { id: folderId } });
+	await prisma.file.delete({ where: { folderId } });
+
 	res.redirect('/');
 };
 
-const getUpload = async (req, res) => {
-	const upload = await prisma.upload.findFirst({
-		where: { id: Number(req.params.uploadId) },
-	});
-
-	res.render('upload', { upload });
+export const logOut = (req, res, next) => {
+	req.logout((err) => err != null && next(err));
+	res.redirect('/');
 };
-
-const download = async (req, res) => {
-	const { destination, name } = await prisma.upload.findFirst({
-		select: { name: true, destination: true },
-		where: { id: Number(req.params.uploadId) },
-	});
-
-	res.download(destination, name);
-};
-
-export { deleteFolder, download, getFolder, getIndex, getUpload };

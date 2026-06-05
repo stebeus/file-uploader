@@ -1,6 +1,6 @@
 import { pinoHttp } from 'pino-http';
 
-const pino = pinoHttp({
+export const pino = pinoHttp({
 	level: 'debug',
 	serializers: {
 		req: ({ method, url }) => ({ method, url }),
@@ -11,6 +11,4 @@ const pino = pinoHttp({
 	},
 });
 
-const { logger } = pino;
-
-export { logger, pino };
+export const { logger } = pino;

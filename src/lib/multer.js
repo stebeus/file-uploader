@@ -3,6 +3,6 @@ import multer from 'multer';
 export const upload = multer({
 	dest: 'uploads/',
 	limits: {
-		fileSize: 1e9, // 1 GB
+		fileSize: 5e7, // 50 MB
 	},
 });

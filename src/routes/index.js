@@ -1,19 +1,12 @@
 import { Router } from 'express';
 
-import {
-	deleteFolder,
-	download,
-	getFolder,
-	getIndex,
-	getUpload,
-} from '#root/controllers/index.js';
+import { deleteFolder, getFolder, getIndex, logOut } from '#root/controllers/index.js';
 
-const router = Router();
+export const index = Router();
 
-router.get('/', getIndex);
-router.get('/folder/:folderId/', getFolder);
-router.get('/delete-folder/:folderId', deleteFolder);
-router.get('{*splat}/upload/:uploadId', getUpload);
-router.get('/download/:uploadId', download);
+index.get('/', getIndex);
 
-export { router as index };
+index.get('/folder/:folderId/', getFolder);
+index.get('/delete-folder/:folderId', deleteFolder);
+
+index.get('/logout', logOut);

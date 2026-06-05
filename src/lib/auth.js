@@ -4,12 +4,12 @@ import { Strategy } from 'passport-local';
 
 import { prisma } from './prisma.js';
 
-const verify = async (username, password, done) => {
+const verify = async (email, password, done) => {
 	try {
-		const user = await prisma.user.findFirst({ where: { username } });
+		const user = await prisma.user.findFirst({ where: { email } });
 
 		if (user == null) {
-			return done(null, false, { message: 'Incorrect username' });
+			return done(null, false, { message: 'Incorrect email' });
 		}
 
 		const isMatch = await compare(password, user.password);
@@ -24,7 +24,7 @@ const verify = async (username, password, done) => {
 	}
 };
 
-passport.use(new Strategy(verify));
+passport.use(new Strategy({ usernameField: 'email' }, verify));
 
 passport.serializeUser(({ id }, done) => done(null, id));
 

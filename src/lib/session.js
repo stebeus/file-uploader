@@ -1,20 +1,18 @@
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
-import session from 'express-session';
+import expressSession from 'express-session';
 
 import { SESSION_SECRET } from '#root/config.js';
 
 import { prisma } from './prisma.js';
 
-const sessionAge = 90 * 24 * 60 * 60 * 1000; // 3 months
-
 const store = new PrismaSessionStore(prisma, {
-	checkPeriod: sessionAge,
+	checkPeriod: 60 * 60 * 1000,
 	dbRecordIdIsSessionId: true,
 });
 
-export const expressSession = session({
+export const session = expressSession({
 	cookie: {
-		maxAge: sessionAge,
+		maxAge: 182 * 24 * 60 * 60 * 1000, // 6 months
 	},
 	resave: false,
 	saveUninitialized: false,
