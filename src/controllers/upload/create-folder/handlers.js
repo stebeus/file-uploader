@@ -19,10 +19,11 @@ export const getCreateFolder = (_req, res) => render(res);
 export const createFolder = [
 	validation,
 	async (req, res) => {
-		const {
-			body: { name },
-			user: { id },
-		} = req;
+		const errs = validationResult(req);
+		if (!errs.isEmpty()) return render(res, errs.array());
+
+		const { name } = matchedData(req);
+		const { id } = req.user;
 
 		await prisma.folder.create({ data: { name, userId: id } });
 

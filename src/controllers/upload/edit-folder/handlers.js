@@ -13,7 +13,7 @@ const render = ({ folderId }, res, value, errs) =>
 	});
 
 export const getEditFolder = async (req, res) => {
-	const { folderId } = req.params;
+	const folderId = Number(req.params.folderId);
 
 	const { name } = await prisma.folder.findFirst({
 		select: { name: true },
@@ -26,10 +26,11 @@ export const getEditFolder = async (req, res) => {
 export const editFolder = [
 	validation,
 	async (req, res) => {
-		const {
-			body: { name },
-			params: { folderId },
-		} = req;
+		const errs = validationResult(req);
+		if (!errs.isEmpty()) return render(res, errs.array());
+
+		const folderId = Number(req.params.folderId);
+		const { name } = matchedData(req);
 
 		await prisma.folder.update({ where: { id: folderId }, data: { name } });
 

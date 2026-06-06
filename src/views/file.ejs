@@ -6,11 +6,11 @@
 			<%- include('partials/navbar') %>
 			<main class="flex flex-col gap-l max-w mx-auto p-m w-full">
 				<h2 class="fs-l fw-bold"><%= file.name %></h2>
-				<p>Size: <%= formatSize(file.size) %> MB</p>
+				<p>Size: <%= file.size %> bytes</p>
 
 				<p>
 					Uploaded at:
-					<time datetime="<%= file.createdAt %>"><%= formatDate(file.createdAt) %></time>
+					<time datetime="<%= file.createdAt %>"><%= file.createdAt %></time>
 				</p>
 
 				<%- include('partials/button-link', { href: `/download/${file.id}`, label: 'Download' }) %>

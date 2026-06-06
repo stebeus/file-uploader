@@ -10,7 +10,7 @@ export const getIndex = async (req, res) => {
 };
 
 export const getFolder = async (req, res) => {
-	const { folderId } = req.params;
+	const folderId = Number(req.params.folderId);
 
 	const folders = await prisma.folder.findMany();
 	const folder = await prisma.folder.findFirst({ where: { id: folderId } });
@@ -20,7 +20,7 @@ export const getFolder = async (req, res) => {
 };
 
 export const deleteFolder = async (req, res) => {
-	const { folderId } = req.params;
+	const folderId = Number(req.params.folderId);
 
 	await prisma.folder.delete({ where: { id: folderId } });
 	await prisma.file.delete({ where: { folderId } });
