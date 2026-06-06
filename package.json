@@ -11,7 +11,7 @@
 		"db:gen": "prisma generate",
 		"db:reset": "prisma migrate reset",
 		"lint": "biome check --fix",
-		"start": "node --watch src/index.js && prisma generate",
+		"start": "prisma generate && node --watch src/index.js",
 		"test": "node --test --watch"
 	},
 	"dependencies": {
