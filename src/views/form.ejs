@@ -11,7 +11,7 @@
 						class="flex flex-col gap-2xl"
 						action="<%= action %>"
 						method="post"
-						<%- locals.hasFileUpload ? 'enctype="multipart/form-data"' : '' %>
+						<%- locals.hasUpload ? 'enctype="multipart/form-data"' : '' %>
 					>
 						<% if (locals.errs != null) { %>
 							<%- include('partials/alert', {
