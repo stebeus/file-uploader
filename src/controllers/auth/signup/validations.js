@@ -1,6 +1,5 @@
 import { body } from 'express-validator';
 
-import { pool, prisma } from '#root/lib/prisma.js';
 import { createLengthChain } from '#root/utils/validations.js';
 
 const createNameChain = ({
