@@ -8,7 +8,7 @@ import { handleError, handleNotFoundError } from './controllers/errors.js';
 import { setCurrentUser } from './lib/auth.js';
 import { logger, pino } from './lib/logger.js';
 import { session } from './lib/session.js';
-import { parseParamIds, setAppName } from './middleware.js';
+import { setAppName } from './middleware.js';
 import { router } from './routes/router.js';
 
 const app = express();
@@ -27,7 +27,6 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(setAppName);
-app.use(parseParamIds);
 
 app.use(router);
 
