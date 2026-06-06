@@ -10,7 +10,7 @@
 
 				<p>
 					Uploaded at:
-					<time datetime="<%= file.createdAt %>"><%= file.createdAt %></time>
+					<time datetime="<%= file.createdAt %>"><%= formatDate(file.createdAt) %></time>
 				</p>
 
 				<%- include('partials/button-link', { href: `/download/${file.id}`, label: 'Download' }) %>

@@ -58,6 +58,10 @@
 	}
 }
 
+::file-selector-button {
+	display: none;
+}
+
 ::placeholder {
 	opacity: var(--opacity);
 }

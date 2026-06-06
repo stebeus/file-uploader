@@ -4,13 +4,14 @@ import createHttpError from 'http-errors';
 
 import { prisma } from '#root/lib/prisma.js';
 import { supabase } from '#root/lib/supabase.js';
+import { formatDate } from '#root/utils/formatters.js';
 
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = constants;
 
 export const getFile = async (req, res) => {
 	const fileId = Number(req.params.fileId);
 	const file = await prisma.file.findFirst({ where: { id: fileId } });
-	res.render('file', { file });
+	res.render('file', { file, formatDate });
 };
 
 export const download = async (req, res, next) => {

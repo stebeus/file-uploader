@@ -10,7 +10,7 @@ const { HTTP_STATUS_INTERNAL_SERVER_ERROR } = constants;
 
 const inputs = [
 	{
-		label: 'File',
+		label: 'Choose file',
 		type: 'file',
 		name: 'file',
 		isRequired: true,
