@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-import { prisma } from '#root/lib/prisma.js';
+import { pool, prisma } from '#root/lib/prisma.js';
 import { createLengthChain } from '#root/utils/validations.js';
 
 const createNameChain = ({
@@ -20,15 +20,9 @@ const createNameChain = ({
 
 const name = createNameChain({ fieldName: 'name', fieldLabel: 'Full name', ignore: ' ', max: 100 });
 
-const isEmailTaken = async (email) => {
-	const isEmailTaken = await prisma.user.findFirst({ where: { email } });
-	if (isEmailTaken) throw new Error('Email has been taken');
-};
-
 const email = createLengthChain({ fieldName: 'email' })
 	.isEmail()
-	.withMessage('Must be a valid email address')
-	.custom(isEmailTaken);
+	.withMessage('Must be a valid email address');
 
 const password = createLengthChain({ fieldName: 'password' });
 
